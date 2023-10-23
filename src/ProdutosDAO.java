@@ -120,4 +120,102 @@ public class ProdutosDAO {
         return listagem;
     }
 
+    public void venderProduto(int idProduto) {
+        conn = new conectaDAO().connectDB();
+
+        if (conn != null) {
+            try {
+                String sql = "UPDATE produtos SET status = ? WHERE id = ?";
+                prep = conn.prepareStatement(sql);
+                prep.setString(1, "Vendido");
+                prep.setInt(2, idProduto);
+
+                int rowsAffected = prep.executeUpdate();
+                if (rowsAffected > 0) {
+                    JOptionPane.showMessageDialog(null, "Produto vendido com sucesso.");
+                } else {
+                    JOptionPane.showMessageDialog(null, "Falha ao vender o produto. Produto não encontrado.");
+                }
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Erro ao vender o produto: " + ex.getMessage());
+            } finally {
+
+                if (prep != null) {
+                    try {
+                        prep.close();
+                    } catch (SQLException ex) {
+                        JOptionPane.showMessageDialog(null, "Erro ao fechar a declaração preparada: " + ex.getMessage());
+                    }
+                }
+                if (conn != null) {
+                    try {
+                        conn.close();
+                    } catch (SQLException ex) {
+                        JOptionPane.showMessageDialog(null, "Erro ao fechar a conexão: " + ex.getMessage());
+                    }
+                }
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Falha ao conectar ao banco de dados.");
+        }
+    }
+
+    public ArrayList<ProdutosDTO> listarProdutosVendidos() {
+        ArrayList<ProdutosDTO> produtosVendidos = new ArrayList<>();
+
+        conn = new conectaDAO().connectDB();
+
+        if (conn != null) {
+            try {
+                String sql = "SELECT id, nome, valor, status FROM produtos WHERE status = ?";
+                prep = conn.prepareStatement(sql);
+                prep.setString(1, "Vendido");
+                resultset = prep.executeQuery();
+
+                while (resultset.next()) {
+                    int id = resultset.getInt("id");
+                    String nome = resultset.getString("nome");
+                    int valor = resultset.getInt("valor");
+                    String status = resultset.getString("status");
+
+                    ProdutosDTO produto = new ProdutosDTO();
+                    produto.setId(id);
+                    produto.setNome(nome);
+                    produto.setValor(valor);
+                    produto.setStatus(status);
+
+                    produtosVendidos.add(produto);
+                }
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Erro ao listar produtos vendidos: " + ex.getMessage());
+            } finally {
+                // Certifique-se de fechar a conexão e os recursos associados.
+                if (resultset != null) {
+                    try {
+                        resultset.close();
+                    } catch (SQLException ex) {
+                        JOptionPane.showMessageDialog(null, "Erro ao fechar o resultado: " + ex.getMessage());
+                    }
+                }
+                if (prep != null) {
+                    try {
+                        prep.close();
+                    } catch (SQLException ex) {
+                        JOptionPane.showMessageDialog(null, "Erro ao fechar a declaração preparada: " + ex.getMessage());
+                    }
+                }
+                if (conn != null) {
+                    try {
+                        conn.close();
+                    } catch (SQLException ex) {
+                        JOptionPane.showMessageDialog(null, "Erro ao fechar a conexão: " + ex.getMessage());
+                    }
+                }
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Falha ao conectar ao banco de dados.");
+        }
+
+        return produtosVendidos;
+    }
 }

@@ -1,0 +1,42 @@
+commit b9848486e25f685b6dfa1e2e93ef92bd51c5ef5c
+Author: “Raphael <“rapha.senna@gmail.com”>
+Date:   Fri Oct 13 18:06:42 2023 -0300
+
+    adicionada à pasta a query SQL para criar BD e povoar para testes
+
+commit 9fe4db19650505f52ff2dabb0734ec3d86153b9a
+Merge: 96b884b 0ff64de
+Author: “Raphael <“rapha.senna@gmail.com”>
+Date:   Fri Oct 13 18:01:02 2023 -0300
+
+    Merge branch 'main' of https://github.com/Rcrss1988/LeiloesTDSat
+
+commit 96b884bb0e86a6e144753283ad15c347bbf63a93
+Author: “Raphael <“rapha.senna@gmail.com”>
+Date:   Fri Oct 13 17:58:34 2023 -0300
+
+    classe ProdutosDAO solucionada - listagem de produtos e conexão ao BD
+
+commit 0ff64ded25338645d849a6b665ede944a3d5d8eb
+Author: Rcrss1988 <147734864+Rcrss1988@users.noreply.github.com>
+Date:   Fri Oct 13 17:54:31 2023 -0300
+
+    Create README.md
+    
+    arquivo README.md contendo as seguintes informações:
+    
+    Nome do projeto
+    Explicação sobre o que se trata o projeto
+    Tecnologias utilizadas (exemplo: Java e MySQL)
+
+commit a968aa0f49ffa019f0f43c5f6bf4433ded0bb00f
+Author: “Raphael <“rapha.senna@gmail.com”>
+Date:   Fri Oct 13 17:33:01 2023 -0300
+
+    classe conectaDAO solucionada - sistema conectado ao BD
+
+commit fabc947724ace00b6f547b636e0169c0aa9c9a9d
+Author: “Raphael <“rapha.senna@gmail.com”>
+Date:   Fri Oct 13 17:24:37 2023 -0300
+
+    Projeto inicial
