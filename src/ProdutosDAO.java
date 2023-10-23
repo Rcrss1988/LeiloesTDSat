@@ -160,7 +160,7 @@ public class ProdutosDAO {
         }
     }
 
-    public ArrayList<ProdutosDTO> listarProdutosVendidos() {
+    public ArrayList<ProdutosDTO> relacionarProdutosVendidos() {
         ArrayList<ProdutosDTO> produtosVendidos = new ArrayList<>();
 
         conn = new conectaDAO().connectDB();

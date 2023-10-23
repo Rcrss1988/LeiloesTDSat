@@ -21,7 +21,7 @@ public class vendasVIEW extends javax.swing.JFrame {
         
         ProdutosDAO produtosdao = new ProdutosDAO();
 
-    ArrayList<ProdutosDTO> produtosVendidos = produtosdao.listarProdutosVendidos();
+    ArrayList<ProdutosDTO> produtosVendidos = produtosdao.relacionarProdutosVendidos();
 
     DefaultTableModel model = new DefaultTableModel();
     model.addColumn("ID");
